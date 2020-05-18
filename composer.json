@@ -1,0 +1,31 @@
+{
+  "name": "ralfhortt/wordpress-custom-post-type-boilerplate",
+  "description": "A WordPress Custom Post Type Boilerplate",
+  "type": "wp-plugin",
+  "authors": [
+    {
+      "name": "Ralf Hortt",
+      "email": "me@horttcore.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "RalfHortt\\WordPressCustomPostTypeBoilerplate\\": "src/"
+    },
+    "files": [
+      "inc/functions.php"
+    ]
+  },
+  "require": {
+    "ralfhortt/wp-plugin": "^2",
+    "horttcore/wp-assets": "^1",
+    "ralfhortt/translator-service": "^1.0",
+    "ralfhortt/service-contracts": "^1.0",
+    "horttcore/wp-custom-post-type": "^1.0",
+    "horttcore/wp-custom-taxonomy": "^1.0"
+  },
+  "scripts": {
+    "post-create-project-cmd": "composer run-script replace-textdomain",
+    "replace-textdomain": "DIR=$(basename $PWD); LC_ALL=C find ./ -not \\( -path \".//vendor/*\" -o -path \".//node_modules/*\" -o -path \".//.git/*\" \\) -type f \\( -iname '*.js' -o -iname '*.php' -o -iname '*.css' \\) -exec sed -i '' -e \"s/wordpress-custom-post-type-boilerplate/${DIR}/g\" {} \\;"
+  }
+}
